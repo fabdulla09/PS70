@@ -23,23 +23,43 @@
 <xmp style="display:none;">
 <br> 
 
-#### Week 3: Kinetic
+#### Week 6 & 7: Input and Output Week
 
 <p1>
-  For the kinetic Sculpture I wanted to build off of things that I had already done and so I utilized the press-fit kit 
-  that I made in week 2. I added some gears to it and added a base compenent that the Sculpture can rest on. I then attached
-  a servo motor to it in order to make it operational.
-</p1> 
+  I wanted to make something that could potentially help with my final project, so I ended up making an 
+  input and output device using a phototransistor to where if it reads below a certain reading then the light would turn off.
+  The code segment is placed below
+<p1> 
 
-<img src="kinetic.png" alt="guitar image" style="width: 500px; height: 500px;"> 
+<pre>
+<code>
+const int photo = A0; // variable which stores pin number
+const int pin = 9;
 
-<p1>
-   Here is the code I used in order to make the servo motor move. I made it so that it will turn 180 degrees in one 
-   direction and then stop and turn 180 degrees in the other direction.
-</p1> 
-<img src="Servo.png" alt="guitar image" style="width: 500px; height: 500px;"> 
+void setup() 
+{
+  Serial.begin(9600);
 
+  pinMode(photo, INPUT);  //configures pin 3 as OUTPUT
+  pinMode(pin, OUTPUT);
+}
 
+void loop() 
+{
+   int value = analogRead(A0);
+   Serial.println(value);
+   if (value < 300)// the point at which the state of LEDs change 
+    { 
+      digitalWrite(pin, LOW);  //sets LEDs ON
+    }
+   else
+    {
+      digitalWrite(pin,HIGH);  //Sets LEDs OFF
+    }
+
+}
+</code>
+</pre>
 
 </xmp>
 </body>
