@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<title>PS70: Intro to Digital Fabrication </title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../style.css" rel="stylesheet">
+
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div style="align-items: left; justify-content:left;" class="container-fluid">
+    <h3 class="nav-title"> PS70: Intro to Digital Fabrication</h3>
+    <div class="navbar-nav">
+      <h4></h4>
+      <h4><a class="nav-link" href="../index.html">Home</a></h4>
+      <h4><a class="nav-link" href="../about.html">About</a></h4>
+    </div>
+  </div>
+</nav>
+
+<body>
+
+
+<xmp style="display:none;">
+<br> 
+
+#### Week 4: Microprogramming
+
+<p1>
+  For the microproggramming week I decided to go for something that was less mechanical work and was 
+  more about coding and wiring.
+</p1> 
+
+<p1>
+    For this week I decided to make a probability die where when you push the button, the LEDs in place
+    will light up to showcase a random number. Here is the associated code for it:
+</p1>
+
+<pre>
+<code>
+    const int LED1 = A4;
+const int LED2 = A7;
+const int LED3 = A2;
+const int LED4 = A0;
+const int LED5 = A3;
+const int LED6 = A5;
+const int LED7 = A1;
+const int buttonPin = A6;
+int buttonState;
+long ran;
+int time = 2000;
+
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(LED3, OUTPUT);
+  pinMode(LED4, OUTPUT);
+  pinMode(LED5, OUTPUT);
+  pinMode(LED6, OUTPUT);
+  pinMode(LED7, OUTPUT);
+  pinMode(buttonPin, INPUT);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  buttonState = digitalRead(buttonPin);
+  if (buttonState == HIGH){
+    ran = random(1, 7);
+    if (ran == 1){
+      digitalWrite (LED1, HIGH);
+      delay (time);
+    }
+    if (ran == 2){
+      digitalWrite (LED2, HIGH);
+      digitalWrite (LED3, HIGH);
+      delay (time);
+    }
+    if (ran == 3){
+      digitalWrite (LED1, HIGH);
+      digitalWrite (LED4, HIGH);
+      digitalWrite (LED5, HIGH);
+      delay (time);
+    }
+    if (ran == 4){
+      digitalWrite (LED2, HIGH);
+      digitalWrite (LED3, HIGH);
+      digitalWrite (LED4, HIGH);
+      digitalWrite (LED5, HIGH);
+      delay (time);
+    }
+    if (ran == 5){
+      digitalWrite (LED1, HIGH);
+      digitalWrite (LED2, HIGH);
+      digitalWrite (LED3, HIGH);
+      digitalWrite (LED4, HIGH);
+      digitalWrite (LED5, HIGH);
+      delay (time);
+   }
+   if (ran == 6){
+      digitalWrite (LED2, HIGH);
+      digitalWrite (LED3, HIGH);
+      digitalWrite (LED4, HIGH);
+      digitalWrite (LED5, HIGH);
+      digitalWrite (LED6, HIGH);
+      digitalWrite (LED7, HIGH);
+      delay (time);
+   }
+  }
+  digitalWrite (LED1, LOW);
+  digitalWrite (LED2, LOW);
+  digitalWrite (LED3, LOW);
+  digitalWrite (LED4, LOW);
+  digitalWrite (LED5, LOW);
+  digitalWrite (LED6, LOW);
+  digitalWrite (LED7, LOW);
+
+}
+
+</code>
+</pre>
+    
+
+
+
+</xmp>
+</body>
+
+<script src="../strapdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
+
+</html>
